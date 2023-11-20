@@ -2,6 +2,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     'CharacterCard': typeof import("../components/CharacterCard.vue")['default']
+    'CharacterParams': typeof import("../components/CharacterParams.vue")['default']
     'CharactersBlock': typeof import("../components/CharactersBlock.vue")['default']
     'Intersect': typeof import("../components/Intersect.vue")['default']
     'NuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -25,6 +26,7 @@ declare module 'vue' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyCharacterCard': typeof import("../components/CharacterCard.vue")['default']
+    'LazyCharacterParams': typeof import("../components/CharacterParams.vue")['default']
     'LazyCharactersBlock': typeof import("../components/CharactersBlock.vue")['default']
     'LazyIntersect': typeof import("../components/Intersect.vue")['default']
     'LazyNuxtWelcome': typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -51,6 +53,7 @@ declare module 'vue' {
 }
 
 export const CharacterCard: typeof import("../components/CharacterCard.vue")['default']
+export const CharacterParams: typeof import("../components/CharacterParams.vue")['default']
 export const CharactersBlock: typeof import("../components/CharactersBlock.vue")['default']
 export const Intersect: typeof import("../components/Intersect.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']
@@ -74,6 +77,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyCharacterCard: typeof import("../components/CharacterCard.vue")['default']
+export const LazyCharacterParams: typeof import("../components/CharacterParams.vue")['default']
 export const LazyCharactersBlock: typeof import("../components/CharactersBlock.vue")['default']
 export const LazyIntersect: typeof import("../components/Intersect.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/@nuxt/ui-templates/dist/templates/welcome.vue")['default']

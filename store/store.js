@@ -37,6 +37,12 @@ export const useStore = defineStore("rm-store", {
         }
       }
     },
+    async getCharacter(id) {
+      const response = await fetch(`${this.data.characters}/${id}`, {
+        method: "GET",
+      });
+      this.oneCharacter = await response.json();
+    },
     async fetchNextPage() {
       this.page++;
       await this.getCharacters();
