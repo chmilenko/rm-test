@@ -25,23 +25,15 @@ export const useStore = defineStore("rm-store", {
       setTimeout(() => {
         this.charactersInfo = [...this.charactersInfo, ...result.results];
       }, 1000);
-      if (array) {
+      if(array) {
         for (let i = 0; i < array.length; i++) {
-          const id = this.charactersInfo.filter(
-            (character) => character.id === array[i].split("/").pop()
-          );
-          await this.getCharacter(id);
+          const id = this.charactersInfo.filter((character) => character.id === array[i].split('/').pop())
+          await this.getCharacter(id)
           setTimeout(() => {
             this.charactersInfo = [...this.charactersInfo, this.oneCharacter];
           }, 1000);
         }
       }
-    },
-    async getCharacter(id) {
-      const response = await fetch(`${this.data.characters}/${id}`, {
-        method: "GET",
-      });
-      this.oneCharacter = await response.json();
     },
     async getEpisode(id) {
       const response = await fetch(`${this.data.episodes}/${id}`, {
@@ -49,10 +41,26 @@ export const useStore = defineStore("rm-store", {
       });
       this.oneEpisode = await response.json();
     },
+
+    async getCharacter(id) {
+      const response = await fetch(`${this.data.characters}/${id}`, {
+        method: "GET",
+      });
+      this.oneCharacter = await response.json();
+    },
+    async getLocation(id) {
+      const response = await fetch(`${this.data.locations}/${id}`, {
+        method: "GET",
+      });
+      this.location = await response.json();
+    },
     async fetchNextPage() {
       this.page++;
       await this.getCharacters();
     },
-
+    async scrollLocationResidents() {
+      this.pagination+=20
+      await this.getCharacters();
+    }
   },
 });
