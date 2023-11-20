@@ -1,5 +1,11 @@
 <template>
-  <div>Yo</div>
+  <CharactersBlock />
 </template>
-<script setup></script>
-<style></style>
+<script setup>
+import { useStore } from "~/store/store.js";
+
+const store = useStore();
+
+await store.fetchData();
+</script>
+<style scoped></style>
