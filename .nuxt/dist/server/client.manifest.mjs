@@ -1,0 +1,1 @@
+export { default } from "file:///home/shirota/test%20rm/rm-test/node_modules/@nuxt/vite-builder/dist/runtime/client.manifest.mjs"
