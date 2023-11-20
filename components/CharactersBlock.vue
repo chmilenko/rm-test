@@ -1,20 +1,24 @@
 <template>
-  <div>
-    <div class="filters">
-      <input placeholder="Name search" v-model="searchName" />
-      <select multiple v-model="searchSpecies">
-        <option>Human</option>
-        <option>Alien</option>
-      </select>
-    </div>
-    <div class="charactersBlock">
-      <CharacterCard
-        v-for="character in filteredCharacters"
-        :key="character.id"
-        :character="character"
-      />
-      <Intersect @intersect="store.fetchNextPage" />
-    </div>
+  <div class="filters">
+    <input
+      placeholder="Name search"
+      v-model="searchName"
+      class="input-search-name"
+    />
+    <select v-model="searchSpecies">
+      <option value="" disabled>Filter species...</option>
+      <option>Human</option>
+      <option>Alien</option>
+    </select>
+    <button @click="clearFilters">Сбросить фильтр</button>
+  </div>
+  <div class="characters-block">
+    <CharacterCard
+      v-for="character in filteredCharacters"
+      :key="character.id"
+      :character="character"
+    />
+    <Intersect @intersect="store.fetchNextPage" />
   </div>
 </template>
 
@@ -22,6 +26,7 @@
 import { useStore } from "~/store/store.js";
 
 const store = useStore();
+
 await store.fetchData();
 await store.getCharacters();
 
@@ -32,22 +37,32 @@ const searchSpecies = ref([]);
 
 const filteredCharacters = computed(() => {
   return allCharacters.value.filter((character) => {
-    const nameMatch = character.name
-      .toLowerCase()
-      .includes(searchName.value.toLowerCase());
+    const nameMatch =
+      character.name &&
+      character.name.toLowerCase().includes(searchName.value.toLowerCase());
     const speciesMatch =
       searchSpecies.value.length === 0 ||
       searchSpecies.value.includes(character.species);
     return nameMatch && speciesMatch;
   });
 });
+const clearFilters = () => {
+  searchName.value = "";
+  searchSpecies.value = [];
+};
 </script>
 
 <style scoped>
-.charactersBlock {
+.filters {
+  margin: 5vh auto;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 10vh auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.input-search-name,
+select {
+  height: 30px;
+  width: 120px;
 }
 </style>
