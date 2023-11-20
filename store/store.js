@@ -43,6 +43,12 @@ export const useStore = defineStore("rm-store", {
       });
       this.oneCharacter = await response.json();
     },
+    async getEpisode(id) {
+      const response = await fetch(`${this.data.episodes}/${id}`, {
+        method: "GET",
+      });
+      this.oneEpisode = await response.json();
+    },
     async fetchNextPage() {
       this.page++;
       await this.getCharacters();
