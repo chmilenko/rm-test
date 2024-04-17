@@ -8,19 +8,19 @@
         сlass="image-character"
       />
     </button>
-    <h2 class="character-name"><span>Name:</span> {{ character?.name }}</h2>
+    <h2 class="character-name"><span>NAME:</span> {{ character?.name }}</h2>
     <h3 class="character-species">
-      <span>Species:</span> {{ character?.species }}
+      <span>SPECIES:</span> {{ character?.species }}
     </h3>
-    <p class="participation-intro">Participation in episodes,</p>
+    <p class="participation-intro">PARTICIPATION IN EPISODES,</p>
     <div class="episode-character">
-      <label for="select-episode">Search Episode:</label>
+      <label for="select-episode">SEARCH EPISODE:</label>
       <select
         id="select-episode"
         v-model="selectEpisode"
         @change="handleEpisodeSelection"
       >
-        <option value="" disabled selected>Please select...</option>
+        <option selected disabled>Please select...</option>
         <option
           v-for="(oneEpisode, index) in character?.episode?.slice(0, 5)"
           :key="oneEpisode"
@@ -65,4 +65,10 @@ watch(selectEpisode, (newValue) => {
   }
 });
 </script>
-<style></style>
+<style>
+.character-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+}
+</style>

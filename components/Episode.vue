@@ -1,9 +1,10 @@
 <template>
+  <div v-if="isLoading"><Loader /></div>
   <div>
     <div class="episode-intro">
-      <h2><span>Episode Name:</span> {{ episode?.name }}</h2>
-      <p><span>Episode date:</span> {{ episode?.air_date }}</p>
-      <h3>Characters:</h3>
+      <h2><span>EPISODE NAME:</span> {{ episode?.name }}</h2>
+      <p><span>EPISODE DATA:</span> {{ episode?.air_date }}</p>
+      <h3>CHARACTERS:</h3>
     </div>
     <div class="characters-block">
       <CharacterParams
@@ -22,8 +23,18 @@ const props = defineProps({
   required: true,
 });
 
+const isLoading = ref(true);
+
 const store = useStore();
-await store.getCharacters(props.episode.characters);
+
+onMounted(async () => {
+  try {
+    await store.getCharacters(props.episode.characters);
+    isLoading.value = false;
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 const allCharacters = computed(() => store.charactersInfo);
 </script>
@@ -35,5 +46,6 @@ const allCharacters = computed(() => store.charactersInfo);
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
+  gap: 1vh;
 }
 </style>

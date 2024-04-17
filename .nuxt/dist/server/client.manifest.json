@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "/home/shirota/test rm/rm-test/node_modules/nuxt/dist/app/entry.js": {
+  "C:/Users/artem/projects/rm-test/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "/home/shirota/test rm/rm-test/node_modules/nuxt/dist/app/entry.js"
+    "file": "C:/Users/artem/projects/rm-test/node_modules/nuxt/dist/app/entry.js"
   }
 }

@@ -8,15 +8,15 @@
           @click="() => navigateCharacter(character.id)"
         />
       </button>
-      <h2><span>Name:</span> {{ character?.name }}</h2>
-      <h3><span>Species: </span>{{ character?.species }}</h3>
+      <h2><span>NAME:</span> {{ character?.name }}</h2>
+      <h3><span>SPECIES: </span>{{ character?.species }}</h3>
   
       <div class="check-location">
         <button
           @click="() => navigateLocation(character?.location?.url)"
           class="location-btn"
         >
-          <span>Check Location:</span>
+          <span>CHECK LOCATION:</span>
           <h3>{{ character?.location?.name }}</h3>
         </button>
       </div>

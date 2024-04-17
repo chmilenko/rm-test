@@ -7,7 +7,6 @@ export const useStore = defineStore("rm-store", {
     oneEpisode: {},
     oneCharacter: {},
     location: {},
-    pagination: 20,
   }),
   actions: {
     async fetchData() {
@@ -58,9 +57,5 @@ export const useStore = defineStore("rm-store", {
       this.page++;
       await this.getCharacters();
     },
-    async scrollLocationResidents() {
-      this.pagination+=20
-      await this.getCharacters();
-    }
   },
 });
